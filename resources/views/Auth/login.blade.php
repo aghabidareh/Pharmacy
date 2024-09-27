@@ -27,14 +27,14 @@
 
                   @include('layouts.messages')
 
-                  <form class="row g-3 needs-validation" method="POST" action="">
+                  <form class="row g-3 needs-validation" method="POST" action="{{ route('check') }}">
                     @csrf
 
                     <div class="col-12">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group has-validation">
                           <span class="input-group-text" id="inputGroupPrepend">@</span>
-                          <input type="email" name="username" class="form-control" id="email" required>
+                          <input type="email" name="email" class="form-control" id="email" required>
                           <div class="invalid-feedback">Please choose a username.</div>
                         </div>
                       </div>
