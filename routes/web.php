@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Customer\CustomersController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Home\HomeController;
 
@@ -16,6 +17,17 @@ Route::namespace('authentication')->group(function () {
 Route::namespace('dashboard')->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
+        Route::prefix('customers')->group(function(){
+            Route::get('/' , [CustomersController::class,'index'])->name('customers');
+
+            Route::get('add' , [CustomersController::class,'add'])->name('add-customer');
+            Route::post('add' , [CustomersController::class,'store'])->name('store-customer');
+
+            Route::get('edit/{id}', [CustomersController::class,'edit'])->name('edit-customer');
+            Route::post('update/{id}', [CustomersController::class,'update'])->name('update-customer');
+
+            Route::get('delete/{id}' , [CustomersController::class,'delete'])->name('delete-customer');
+        });
     });
 });
 
