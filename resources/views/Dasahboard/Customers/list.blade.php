@@ -17,27 +17,30 @@
               <h5 class="card-title float-left"><a href="{{ route('add-customer') }}" class="btn btn-primary">Add New Customer</a></h5>
 
               <!-- Dark Table -->
+
+              @include('layouts.messages')
+
               <table class="table table-dark">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                    <td>
-                        <a href="{{ route('edit-customer' , 1)}}" class="btn btn-warning btn-sm">Edit</a>
-                        <a onclick="return confirm('are your to delete this user?')" href="{{ route('delete-customer' , 1)}}" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                  </tr>
+                    @foreach ($records as $record)
+                    <tr>
+                        <th scope="row">{{ $record->id }}</th>
+                        <td>{{ $record->email }}</td>
+                        <td>{{ date('d-m-Y' , strtotime($record->created_at)) }}</td>
+                        <td>
+                            <a href="{{ route('edit-customer' , $record->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a onclick="return confirm('are your to delete this user?')" href="{{ route('delete-customer' , $record->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                      </tr>
+                    @endforeach
                 </tbody>
               </table>
               <!-- End Dark Table -->
