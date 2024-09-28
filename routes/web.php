@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Customer\CustomersController;
-use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Customer\CustomersController;
 
 Route::namespace('authentication')->group(function () {
     Route::get("/", [AuthController::class,"login"])->name("login");

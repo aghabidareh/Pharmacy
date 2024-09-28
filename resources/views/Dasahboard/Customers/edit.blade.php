@@ -23,15 +23,16 @@
               <h5 class="card-title">Vertical Form</h5>
 
               <!-- Vertical Form -->
-              <form class="row g-3" method="POST" action="{{ route('update-customer') }}">
+              <form class="row g-3" method="POST" action="{{ route('update-customer' , $user->id) }}">
                 @csrf
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" name="email" class="form-control" id="inputEmail4">
+                  <input type="email" value="{{ $user->email }}" name="email" class="form-control" id="inputEmail4">
                 </div>
                 <div class="col-12">
                   <label for="inputPassword4" class="form-label">Password</label>
                   <input type="password" name="password" class="form-control" id="inputPassword4">
+                  <div><span class="text-secondary">enter your new password if you want.</span></div>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>

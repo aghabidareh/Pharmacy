@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Dashboard\Customer;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,14 +34,27 @@ class CustomersController extends Controller
     }
 
     public function edit($id){
-        return view('Dasahboard.Customers.edit');
+        $user = User::find($id);
+
+        return view('Dasahboard.Customers.edit' , compact('user'));
     }
 
     public function update(Request $request, $id){
-        die;
+        $user = User::find($id);
+        if(!empty($request->email)){
+            $user->email = $request->email;
+        }
+        if(!empty($request->password)){
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        return redirect()->route('customers')->with('success','Customer SuccessFully updated!.');
     }
 
     public function delete($id){
-        die;
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('customers')->with('success','Customer SuccessFully Deleted!.');
     }
 }

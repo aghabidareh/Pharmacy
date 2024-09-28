@@ -43,7 +43,12 @@
                     @endforeach
                 </tbody>
               </table>
-              <!-- End Dark Table -->
+
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-md m-0 float-right">
+                  {!! $records->appends(Request::except('page'))->links() !!}
+                </ul>
+              </div>
 
             </div>
           </div>
