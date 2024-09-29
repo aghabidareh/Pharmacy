@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Customer\CustomersController;
+use App\Http\Controllers\Dashboard\Midicines\MedicinesController;
 
 Route::namespace('authentication')->group(function () {
     Route::get("/", [AuthController::class,"login"])->name("login");
@@ -27,6 +28,17 @@ Route::namespace('dashboard')->group(function(){
             Route::post('update/{id}', [CustomersController::class,'update'])->name('update-customer');
 
             Route::get('delete/{id}' , [CustomersController::class,'delete'])->name('delete-customer');
+        });
+        Route::prefix('medicines')->group(function(){
+            Route::get('/' , [MedicinesController::class,'index'])->name('medicines');
+
+            Route::get('add' , [MedicinesController::class,'add'])->name('add-medicine');
+            Route::post('add' , [MedicinesController::class,'store'])->name('store-medicine');
+
+            Route::get('edit/{id}', [MedicinesController::class,'edit'])->name('edit-medicine');
+            Route::post('update/{id}', [MedicinesController::class,'update'])->name('update-medicine');
+
+            Route::get('delete/{id}' , [MedicinesController::class,'delete'])->name('delete-medicine');
         });
     });
 });

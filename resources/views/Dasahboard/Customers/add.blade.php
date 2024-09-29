@@ -3,16 +3,6 @@
 
 <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Form Layouts</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Layouts</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
     <section class="section">
       <div class="row">
 
@@ -20,7 +10,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Vertical Form</h5>
+              <h5 class="card-title">Add Customer</h5>
 
               <!-- Vertical Form -->
               <form class="row g-3" method="POST" action="{{ route('store-customer') }}">
