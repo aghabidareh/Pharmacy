@@ -24,6 +24,13 @@
         </a>
       </li>
 
+            <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) == 'medicines_stock') @else collapsed @endif" href="{{ route('medicines-stock') }}">
+          <i class="bi bi-archive"></i>
+          <span>Medicines Stock</span>
+        </a>
+      </li>
+
 
     </ul>
 

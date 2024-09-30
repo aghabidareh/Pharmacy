@@ -6,6 +6,7 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Customer\CustomersController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesController;
+use App\Http\Controllers\Dashboard\Midicines\MedicinesStockController;
 
 Route::namespace('authentication')->group(function () {
     Route::get("/", [AuthController::class,"login"])->name("login");
@@ -32,13 +33,24 @@ Route::namespace('dashboard')->group(function(){
         Route::prefix('medicines')->group(function(){
             Route::get('/' , [MedicinesController::class,'index'])->name('medicines');
 
-            Route::get('add' , [MedicinesjController::class,'add'])->name('add-medicine');
+            Route::get('add' , [MedicinesController::class,'add'])->name('add-medicine');
             Route::post('add' , [MedicinesController::class,'store'])->name('store-medicine');
 
             Route::get('edit/{id}', [MedicinesController::class,'edit'])->name('edit-medicine');
             Route::post('update/{id}', [MedicinesController::class,'update'])->name('update-medicine');
 
             Route::get('delete/{id}' , [MedicinesController::class,'delete'])->name('delete-medicine');
+        });
+        Route::prefix('medicines_stock')->group(function(){
+            Route::get('/' , [MedicinesStockController::class,'index'])->name('medicines-stock');
+
+            Route::get('add' , [MedicinesStockController::class,'add'])->name('add-medicine-stock');
+            Route::post('add' , [MedicinesStockController::class,'store'])->name('store-medicine-stock');
+
+            Route::get('edit/{id}', [MedicinesStockController::class,'edit'])->name('edit-medicine-stock');
+            Route::post('update/{id}', [MedicinesStockController::class,'update'])->name('update-medicine-stock');
+
+            Route::get('delete/{id}' , [MedicinesStockController::class,'delete'])->name('delete-medicine-stock');
         });
     });
 });
