@@ -33,18 +33,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($records as $record)
                       <tr>
-                        <td>ID</td>
-                        <td>Name</td>
-                        <td>Packing</td>
-                        <td>Generic Name</td>
-                        <td>Supplier Name</td>
-                        <td>Created At</td>
+                        <td>{{ $record->id }}</td>
+                        <td>{{ $record->name }}</td>
+                        <td>{{ $record->packing }}</td>
+                        <td>{{ $record->generic_name }}</td>
+                        <td>{{ $record->supplier_name }}</td>
+                        <td>{{ $record->created_at }}</td>
                         <td>
-                            <a href="{{ route('edit-medicine' , 1)}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a onclick="return confirm('are your to delete this Item?')" href="{{ route('delete-medicine' , 1)}}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('edit-medicine' , $record->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a onclick="return confirm('are your to delete this Item?')" href="{{ route('delete-medicine' , $record->id)}}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                       </tr>
+                      @endforeach
                   </tbody>
                 </table>
 

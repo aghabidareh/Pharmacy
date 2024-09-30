@@ -32,7 +32,7 @@ Route::namespace('dashboard')->group(function(){
         Route::prefix('medicines')->group(function(){
             Route::get('/' , [MedicinesController::class,'index'])->name('medicines');
 
-            Route::get('add' , [MedicinesController::class,'add'])->name('add-medicine');
+            Route::get('add' , [MedicinesjController::class,'add'])->name('add-medicine');
             Route::post('add' , [MedicinesController::class,'store'])->name('store-medicine');
 
             Route::get('edit/{id}', [MedicinesController::class,'edit'])->name('edit-medicine');

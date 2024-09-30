@@ -17,19 +17,19 @@
                 @csrf
                 <div class="col-12">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" name="name" value="nothing for now" class="form-control" id="name">
+                  <input type="text" name="name" value="{{ $record->name }}" class="form-control" id="name">
                 </div>
                 <div class="col-12">
                   <label for="packing" class="form-label">Packing</label>
-                  <input type="text" value="nothing for now" name="packing" class="form-control" id="packing">
+                  <input type="text" value="{{ $record->packing }}" name="packing" class="form-control" id="packing">
                 </div>
                 <div class="col-12">
                     <label for="generic_name" class="form-label">Generic Name</label>
-                    <input type="text" value="nothing for now" name="generic_name" class="form-control" id="generic_name">
+                    <input type="text" value="{{ $record->generic_name }}" name="generic_name" class="form-control" id="generic_name">
                   </div>
                   <div class="col-12">
                     <label for="supplier_name" class="form-label">Supplier Name</label>
-                    <input type="text" value="nothing for now" name="supplier_name" class="form-control" id="supplier_name">
+                    <input type="text" value="{{ $record->supplier_name }}" name="supplier_name" class="form-control" id="supplier_name">
                   </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
