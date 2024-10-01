@@ -13,7 +13,7 @@
             <div class="card-body">
               <h5 class="card-title">Add Medicine</h5>
 
-              <form class="row g-3" method="POST" action="{{ route('update-medicine' , 1) }}">
+              <form class="row g-3" method="POST" action="{{ route('update-medicine' , $record->id) }}">
                 @csrf
                 <div class="col-12">
                   <label for="name" class="form-label">Name</label>

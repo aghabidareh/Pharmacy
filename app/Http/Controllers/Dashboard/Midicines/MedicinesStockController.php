@@ -51,9 +51,10 @@ class MedicinesStockController extends Controller
      */
     public function edit(string $id)
     {
-        $record = MedicinesStock::find($id);
+        $value = MedicinesStock::find($id);
+        $records = Medicine::get();;
 
-        return view('Dasahboard.MedicinesStock.edit' , compact('record'));
+        return view('Dasahboard.MedicinesStock.edit' , compact(['value' , 'records']));
     }
 
     /**
@@ -61,7 +62,16 @@ class MedicinesStockController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $value = MedicinesStock::find($id);
+        $value->medicines_id = $request->medicines_id;
+        $value->batch_id = $request->batch_id;
+        $value->expierd_at = $request->expierd_at;
+        $value->quantity = $request->quantity;
+        $value->mrp = $request->mrp;
+        $value->rate = $request->rate;
+        $value->save();
+
+        return redirect()->route('medicines-stock')->with('success' , "Medicine stock successfully updated!");
     }
 
     /**
@@ -69,6 +79,8 @@ class MedicinesStockController extends Controller
      */
     public function delete(string $id)
     {
-        //
+        MedicinesStock::find($id)->delete();
+
+        return redirect()->route('medicines-stock')->with('success' , 'Stock Successfully Deleted');
     }
 }

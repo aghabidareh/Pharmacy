@@ -37,7 +37,7 @@
                       @foreach($records as $record)
                         <tr>
                           <td>{{ $record->id }}</td>
-                          <td>{{ $record->medicines_id }}</td>
+                          <td>{{ $record->getMenicinesName->name }}</td>
                           <td>{{ $record->batch_id }}</td>
                           <td>{{ $record->quantity }}</td>
                           <td>{{ $record->mrp }}</td>

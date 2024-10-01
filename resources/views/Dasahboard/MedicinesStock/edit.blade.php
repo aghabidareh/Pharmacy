@@ -11,28 +11,40 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Medicine</h5>
+              <h5 class="card-title">Edit Medicine Stock</h5>
 
-              <form class="row g-3" method="POST" action="{{ route('update-medicine-stock' , 1) }}">
+              <form class="row g-3" method="POST" action="{{ route('update-medicine-stock' , $value->id) }}">
                 @csrf
                 <div class="col-12">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" name="name" value="{{ $record->name }}" class="form-control" id="name">
+                  <label for="medicines_id" class="form-label">Medicine Name</label>
+                  <select class="form-control" name="medicines_id" id="medicines_id">
+                    @foreach ($records as $record)
+                        <option {{ $record->id == $value->id ? 'selected' : '' }} value="{{ $record->id }}">{{ $record->name }}</option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="col-12">
-                  <label for="packing" class="form-label">Packing</label>
-                  <input type="text" value="{{ $record->packing }}" name="packing" class="form-control" id="packing">
+                  <label for="batch_id" class="form-label">Batch Id</label>
+                  <input required type="text" value="{{ $value->batch_id }}" name="batch_id" class="form-control" id="batch_id">
                 </div>
                 <div class="col-12">
-                    <label for="generic_name" class="form-label">Generic Name</label>
-                    <input type="text" value="{{ $record->generic_name }}" name="generic_name" class="form-control" id="generic_name">
+                    <label for="expierd_at" class="form-label">Expierd At</label>
+                    <input required type="date" value="{{ $value->expierd_at }}" name="expierd_at" class="form-control" id="expierd_at">
                   </div>
                   <div class="col-12">
-                    <label for="supplier_name" class="form-label">Supplier Name</label>
-                    <input type="text" value="{{ $record->supplier_name }}" name="supplier_name" class="form-control" id="supplier_name">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input required type="text" value="{{ $value->quantity }}" name="quantity" class="form-control" id="quantity">
+                  </div>
+                  <div class="col-12">
+                    <label for="mrp" class="form-label">MRP</label>
+                    <input required type="text" value="{{ $value->mrp }}" name="mrp" class="form-control" id="mrp">
+                  </div>
+                  <div class="col-12">
+                    <label for="rate" class="form-label">Rate</label>
+                    <input required type="text" value="{{ $value->rate }}" name="rate" class="form-control" id="rate">
                   </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
               </form><!-- Vertical Form -->
