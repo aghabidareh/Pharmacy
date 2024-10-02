@@ -50,8 +50,9 @@ class InvoicesController extends Controller
     public function edit(string $id)
     {
         $record = Invoice::find($id);
+        $customers = User::get();
 
-        return view('Dasahboard.Invoices.edit' , compact('record'));
+        return view('Dasahboard.Invoices.edit' , compact(['record' , 'customers']));
     }
 
     /**
@@ -59,7 +60,15 @@ class InvoicesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $saver = Invoice::find($id);
+        $saver->net_total = $request->net_total;
+        $saver->invoice_date = $request->invoice_date;
+        $saver->customer_id = $request->customer_id;
+        $saver->total_amount = $request->total_amount;
+        $saver->total_discount = $request->total_discount;
+        $saver->save();
+
+        return redirect()->route('invoices')->with('success' , 'Invoice SuccessFully Updated!');
     }
 
     /**

@@ -11,28 +11,36 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Supplier</h5>
+              <h5 class="card-title">Edit Invoice</h5>
 
-              <form class="row g-3" method="POST" action="{{ route('update-suppliers' , $record->id) }}">
+              <form class="row g-3" method="POST" action="{{ route('update-invoices' , $record->id) }}">
                 @csrf
                 <div class="col-12">
-                  <label for="supplier_name" class="form-label">Supplier Name</label>
-                    <input type="text" required name="supplier_name" class="form-control" value="{{ $record->supplier_name }}" required id="supplier_name">
+                  <label for="net_total" class="form-label">Net Total</label>
+                  <input value="{{ $record->net_total }}" type="text" required name="net_total" class="form-control" id="net_total">
                 </div>
                 <div class="col-12">
-                    <label for="supplier_email" class="form-label">Supplier Email</label>
-                    <input type="text" required value="{{ $record->supplier_email }}" name="supplier_email" class="form-control" id="supplier_email">
+                  <label for="invoice_date" class="form-label">Invoice Date</label>
+                  <input value="{{ $record->invoice_date }}" type="date" required name="invoice_date" class="form-control" id="invoice_date">
+                </div>
+                <div class="col-12">
+                    <label for="customer_id" class="form-label">Customer</label>
+                    <select class="form-control" name="customer_id" id="customer_id">
+                    @foreach ($customers as $customer)
+                        <option {{ $customer->id == $record->customer_id ? 'selected' : '' }} value="{{ $customer->id }}">{{ $customer->email }}</option>
+                    @endforeach
+                    </select>
                   </div>
                   <div class="col-12">
-                    <label for="supplier_number" class="form-label">Supplier Number</label>
-                    <input type="text" required value="{{ $record->supplier_number }}" name="supplier_number" class="form-control" id="supplier_number">
+                    <label for="total_amount" class="form-label">Total Amount</label>
+                    <input type="text" value="{{ $record->total_amount }}" required name="total_amount" class="form-control" id="total_amount">
                   </div>
                   <div class="col-12">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" required value="{{ $record->address }}" name="address" class="form-control" id="address">
+                    <label for="total_discount" class="form-label">Total Discount</label>
+                    <input type="text" required name="total_discount" value="{{ $record->total_discount }}" class="form-control" id="total_discount">
                   </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Update</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
               </form><!-- Vertical Form -->
