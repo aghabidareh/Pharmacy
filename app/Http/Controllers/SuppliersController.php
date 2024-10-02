@@ -14,7 +14,7 @@ class SuppliersController extends Controller
     {
         $records = Supplier::paginate(10);
 
-        return view('Dasahboard.index' , compact('records'));
+        return view('Dasahboard.Suppliers.list' , compact('records'));
     }
 
     /**
