@@ -31,6 +31,13 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) == 'suppliers') @else collapsed @endif" href="{{ route('suppliers') }}">
+          <i class="bi bi-person"></i>
+          <span>Suppliers</span>
+        </a>
+      </li>
+
 
     </ul>
 

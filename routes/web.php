@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Customer\CustomersController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesStockController;
+use App\Http\Controllers\SuppliersController;
 
 Route::namespace('authentication')->group(function () {
     Route::get("/", [AuthController::class,"login"])->name("login");
@@ -51,6 +52,17 @@ Route::namespace('dashboard')->group(function(){
             Route::post('update/{id}', [MedicinesStockController::class,'update'])->name('update-medicine-stock');
 
             Route::get('delete/{id}' , [MedicinesStockController::class,'delete'])->name('delete-medicine-stock');
+        });
+        Route::prefix('suppliers')->group(function(){
+            Route::get('/' , [SuppliersController::class,'index'])->name('suppliers');
+
+            Route::get('add' , [SuppliersController::class,'add'])->name('add-suppliers');
+            Route::post('add' , [SuppliersController::class,'store'])->name('store-suppliers');
+
+            Route::get('edit/{id}', [SuppliersController::class,'edit'])->name('edit-suppliers');
+            Route::post('update/{id}', [SuppliersController::class,'update'])->name('update-suppliers');
+
+            Route::get('delete/{id}' , [SuppliersController::class,'delete'])->name('delete-suppliers');
         });
     });
 });
