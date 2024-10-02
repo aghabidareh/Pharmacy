@@ -79,7 +79,9 @@ class MedicinesStockController extends Controller
      */
     public function delete(string $id)
     {
-        MedicinesStock::find($id)->delete();
+        if(MedicinesStock::find($id) != null){
+            MedicinesStock::find($id)->delete();
+        }
 
         return redirect()->route('medicines-stock')->with('success' , 'Stock Successfully Deleted');
     }

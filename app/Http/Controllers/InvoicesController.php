@@ -67,6 +67,7 @@ class InvoicesController extends Controller
      */
     public function delete(string $id)
     {
-        //
+        Invoice::find($id)->delete();
+        return redirect()->route('invoices')->with('success' , 'Invoice successfully deleted');
     }
 }

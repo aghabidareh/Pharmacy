@@ -39,13 +39,13 @@
                           <td>{{ $record->id }}</td>
                           <td>{{ $record->net_total }}</td>
                           <td>{{ $record->invoice_date }}</td>
-                          <td>{{ $record->customer_id }}</td>
+                          <td>{{ $record->getCustomersName->email }}</td>
                           <td>{{ $record->total_amount }}</td>
                           <td>{{ $record->total_discount }}</td>
                           <td>{{ $record->created_at }}</td>
                           <td>
-                              <a href="{{ route('edit-medicine-stock' , $record->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                              <a onclick="return confirm('are your to delete this Item?')" href="{{ route('delete-medicine-stock' , $record->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                              <a href="{{ route('edit-invoices' , $record->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                              <a onclick="return confirm('are your to delete this Item?')" href="{{ route('delete-invoices' , $record->id)}}" class="btn btn-danger btn-sm">Delete</a>
                           </td>
                         </tr>
                         @endforeach

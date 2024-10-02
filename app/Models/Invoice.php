@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+
+    public function getCustomersName(){
+        return $this->belongsTo(User::class , 'customer_id');
+    }
 }
