@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Customer\CustomersController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesStockController;
+use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\SuppliersController;
 
 Route::namespace('authentication')->group(function () {
@@ -63,6 +64,17 @@ Route::namespace('dashboard')->group(function(){
             Route::post('update/{id}', [SuppliersController::class,'update'])->name('update-suppliers');
 
             Route::get('delete/{id}' , [SuppliersController::class,'delete'])->name('delete-suppliers');
+        });
+        Route::prefix('invoices')->group(function(){
+            Route::get('/' , [InvoicesController::class,'index'])->name('invoices');
+
+            Route::get('add' , [InvoicesController::class,'add'])->name('add-invoices');
+            Route::post('add' , [InvoicesController::class,'store'])->name('store-invoices');
+
+            Route::get('edit/{id}', [InvoicesController::class,'edit'])->name('edit-invoices');
+            Route::post('update/{id}', [InvoicesController::class,'update'])->name('update-invoices');
+
+            Route::get('delete/{id}' , [InvoicesController::class,'delete'])->name('delete-invoices');
         });
     });
 });

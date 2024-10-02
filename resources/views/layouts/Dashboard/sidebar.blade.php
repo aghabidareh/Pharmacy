@@ -38,6 +38,13 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) == 'invoices') @else collapsed @endif" href="{{ route('invoices') }}">
+          <i class="bi bi-journal-text"></i>
+          <span>Invoices</span>
+        </a>
+      </li>
+
 
     </ul>
 
