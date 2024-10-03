@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\Customer\CustomersController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesController;
 use App\Http\Controllers\Dashboard\Midicines\MedicinesStockController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SuppliersController;
 
 Route::namespace('authentication')->group(function () {
@@ -75,6 +76,17 @@ Route::namespace('dashboard')->group(function(){
             Route::post('update/{id}', [InvoicesController::class,'update'])->name('update-invoices');
 
             Route::get('delete/{id}' , [InvoicesController::class,'delete'])->name('delete-invoices');
+        });
+        Route::prefix('purchases')->group(function(){
+            Route::get('/' , [PurchasesController::class,'index'])->name('purchases');
+
+            Route::get('add' , [PurchasesController::class,'add'])->name('add-purchases');
+            Route::post('add' , [PurchasesController::class,'store'])->name('store-purchases');
+
+            Route::get('edit/{id}', [PurchasesController::class,'edit'])->name('edit-purchases');
+            Route::post('update/{id}', [PurchasesController::class,'update'])->name('update-purchases');
+
+            Route::get('delete/{id}' , [PurchasesController::class,'delete'])->name('delete-purchases');
         });
     });
 });

@@ -45,6 +45,13 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) == 'purchases') @else collapsed @endif" href="{{ route('purchases') }}">
+          <i class="bi bi-currency-dollar"></i>
+          <span>Purchases</span>
+        </a>
+      </li>
+
 
     </ul>
 
