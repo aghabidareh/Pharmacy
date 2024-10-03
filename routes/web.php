@@ -96,3 +96,10 @@ Route::namespace('homepage')->group(function(){
         Route::get('/' , [HomeController::class,'index'])->name('home');
     });
 });
+
+
+
+
+
+// the last commit, project has ended up,
+// be careful of yourself
